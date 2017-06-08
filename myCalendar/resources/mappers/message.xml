@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.mycal.friend.mapper.MessageMapper">
+
+
+<!-- 쪽지보내기 -->
+	<insert id = "writeMessage" parameterType= "Message">
+		insert into tbl_message (sender, receiver, content)
+		values ( #{sender}, #{receiver}, #{content} )
+	</insert>
+	<!-- 받은 쪽지함 -->
+	<select id = "readsendMessage" parameterType= "string" resultType="Message">
+		select *
+		  from tbl_message
+		 where receiver = #{id}
+	</select>
+	<!-- 보낸 쪽지함 -->
+	<select id = "senderMessage" parameterType= "string" resultType="Message">
+		select *
+		  from tbl_message
+		 where sender = #{id}
+	</select>
+</mapper>

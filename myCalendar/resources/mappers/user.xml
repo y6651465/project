@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.mycal.user.mapper.UserMapper">
+	<insert id="insertUser" parameterType="User">
+	    insert into tbl_user(
+	    	id, name, password, gender, email, birth, notice
+	    ) values (
+	    #{id}, #{name}, #{password}, #{gender}, #{email}, #{birth}, #{notice}
+	    )                               
+	</insert>
+	
+	<update id="updateUser" parameterType="User">
+		update tbl_user
+		   set password = #{password},
+		       email = #{email}
+		 where id = #{id}    	    
+	</update>
+	
+	<delete id="deleteUser" parameterType="String">
+	    delete 
+	      from tbl_user
+	     where id in #{id} 
+	</delete>
+	
+	<select id="showUser" parameterType="String" resultType="User">
+	    select *         
+		  from tbl_user
+		 where id = #{id} 
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
